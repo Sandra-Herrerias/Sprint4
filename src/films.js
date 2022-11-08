@@ -14,7 +14,9 @@ function getAllDirectors(movies) {
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
     let result;
-    result = array.filter(movie => movie.contains(director));
+    result = array.filter(function(element) {
+        return element.director === director;
+    });
     console.log("EXERCICE 2 ->", result);
     return result;
 }
