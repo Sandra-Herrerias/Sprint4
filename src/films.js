@@ -1,5 +1,7 @@
+var director = 'Charles Chaplin';
 getAllDirectors(movies);
-getMoviesFromDirector(movies, 'Charles Chaplin');
+getMoviesFromDirector(movies, director);
+moviesAverageOfDirector(movies, director);
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
     let result;
@@ -22,8 +24,14 @@ function getMoviesFromDirector(array, director) {
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
+//https://jrsinclair.com/articles/2019/five-ways-to-average-with-js-reduce/
 function moviesAverageOfDirector(array, director) {
-
+    let result;
+    result = array.filter(function(element) {
+        return element.director === director;
+    });
+    console.log("EXERCICE 3 ->", result);
+    return result;
 }
 
 // Exercise 4:  Alphabetic order by title 
