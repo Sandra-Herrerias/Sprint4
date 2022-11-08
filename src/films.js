@@ -1,4 +1,5 @@
 getAllDirectors(movies);
+getMoviesFromDirector(movies, 'Charles Chaplin');
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
     let result;
@@ -12,7 +13,10 @@ function getAllDirectors(movies) {
 
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
-
+    let result;
+    result = array.filter(movie => movie.contains(director));
+    console.log("EXERCICE 2 ->", result);
+    return result;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
