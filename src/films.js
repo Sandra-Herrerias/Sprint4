@@ -2,6 +2,7 @@ var director = 'Charles Chaplin';
 getAllDirectors(movies);
 const moviesDirector = getMoviesFromDirector(movies, director);
 moviesAverageOfDirector(moviesDirector, director);
+orderAlphabetically(movies);
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
     let result;
@@ -37,7 +38,20 @@ function moviesAverageOfDirector(array, director) {
 
 // Exercise 4:  Alphabetic order by title 
 function orderAlphabetically(array) {
+    let result;
+    result = array.sort(function (a,b) {
+       /* if(a.title < b.title){
+            return -1;
+        }
+        if(a.title > b.title){
+            return 1;
+        }
+        return 0;*/
+        return a.title.localeCompare(b.title);
+    });
 
+    console.log("EXERCICE 4 ->", result.slice(0,20));
+    return result.slice(0,20);
 }
 
 // Exercise 5: Order by year, ascending
