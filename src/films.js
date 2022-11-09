@@ -1,14 +1,16 @@
 var director = 'Charles Chaplin';
 getAllDirectors(movies);
-const moviesDirector = getMoviesFromDirector(movies, director);
-moviesAverageOfDirector(moviesDirector, director);
+getMoviesFromDirector(movies, director);
+moviesAverageOfDirector(movies, director);
 orderAlphabetically(movies);
+orderByYear(movies);
+
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
     let result;
     // pass a function to map
     result = movies.map(function(movie) {
-        return movie.director
+        return movie.director;
     });
     console.log("EXERCICE 1 ->", result);
     return result;
@@ -28,9 +30,10 @@ function getMoviesFromDirector(array, director) {
 function moviesAverageOfDirector(array, director) {
 
     let result;
-    result = array.reduce(function(sum, movie) {
+    let moviesDirector = getMoviesFromDirector(array, director);
+    result = moviesDirector.reduce(function(sum, movie) {
         return sum + movie.score;
-    }, 0) / array.length;
+    }, 0) / moviesDirector.length;
     console.log("EXERCICE 3 ->", result.toFixed(2));
     result = result.toFixed(2);
     return result;
@@ -42,26 +45,35 @@ function orderAlphabetically(array) {
 
     //sort alphabetically
     result = array.sort(function(a, b) {
-        /* if(a.title < b.title){
-             return -1;
-         }
-         if(a.title > b.title){
-             return 1;
-         }
-         return 0;*/
         return a.title.localeCompare(b.title);
     });
 
     //get only titles
-    result = result.map(movie => movie.title);
+    result = result.map(movie => ({ title: movie.title }));
 
     console.log("EXERCICE 4 ->", result.slice(0, 20));
     return result.slice(0, 20);
 }
 
 // Exercise 5: Order by year, ascending
-function orderByYear() {
+function orderByYear(array) {
+    let result;
 
+    result = array.sort(function(a, b) {
+        if (a.title < b.title || a.year < b.year) {
+            return -1;
+        }
+        if (a.title > b.title || a.year > b.year) {
+            return 1;
+        }
+        return 0;
+    });
+
+    //get titles and years
+    result = result.map(movie => ({ title: movie.title, year: movie.year }));
+
+    console.log("EXERCICE 5 ->", result);
+    return result;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
