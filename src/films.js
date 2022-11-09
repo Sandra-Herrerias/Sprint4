@@ -1,13 +1,13 @@
 var director = 'Charles Chaplin';
 getAllDirectors(movies);
-getMoviesFromDirector(movies, director);
-moviesAverageOfDirector(movies, director);
+const moviesDirector = getMoviesFromDirector(movies, director);
+moviesAverageOfDirector(moviesDirector, director);
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
     let result;
     // pass a function to map
-    result = movies.map(function(element) {
-        return element.director
+    result = movies.map(function(movie) {
+        return movie.director
     });
     console.log("EXERCICE 1 ->", result);
     return result;
@@ -16,21 +16,21 @@ function getAllDirectors(movies) {
 // Exercise 2: Get the films of a certain director
 function getMoviesFromDirector(array, director) {
     let result;
-    result = array.filter(function(element) {
-        return element.director === director;
+    result = array.filter(function(movie) {
+        return movie.director === director;
     });
     console.log("EXERCICE 2 ->", result);
     return result;
 }
 
 // Exercise 3: Calculate the average of the films of a given director.
-//https://jrsinclair.com/articles/2019/five-ways-to-average-with-js-reduce/
 function moviesAverageOfDirector(array, director) {
+ 
     let result;
-    result = array.filter(function(element) {
-        return element.director === director;
-    });
-    console.log("EXERCICE 3 ->", result);
+    result = array.reduce(function(sum, movie) {
+        return  sum + movie.score;
+    },0) / array.length;
+    console.log("EXERCICE 3 ->", result); 
     return result;
 }
 
