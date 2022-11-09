@@ -30,7 +30,8 @@ function moviesAverageOfDirector(array, director) {
     result = array.reduce(function(sum, movie) {
         return  sum + movie.score;
     },0) / array.length;
-    console.log("EXERCICE 3 ->", result); 
+    console.log("EXERCICE 3 ->", result.toFixed(2)); 
+    result = result.toFixed(2);
     return result;
 }
 
