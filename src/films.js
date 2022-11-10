@@ -1,8 +1,9 @@
+//hoursToMinutes(movies);
 // Exercise 1: Get the array of all directors.
-function getAllDirectors(movies) {
+function getAllDirectors(array) {
     let result;
     // pass a function to map
-    result = movies.map(function(movie) {
+    result = array.map(function(movie) {
         return movie.director;
     });
     console.log("EXERCICE 1 ->", result);
@@ -93,8 +94,60 @@ function moviesAverageByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
+function hoursToMinutes(array) {
 
+    let result;
+    //get movies array hours duration
+    result = array.map(function(movie) {
+        return movie.duration;
+    });
+
+    /** conversion from hours to minutes*/
+    let durationMinutes = [];
+    let finalSumMinutes;
+    let hour;
+    let minutes;
+    let hourToMinute;
+    let hourAndMinWithText;
+    let hourWithText;
+    let minutesWithText;
+
+    result.forEach(function(time) {
+        hourAndMinWithText = time;
+
+        if (/\s/.test(hourAndMinWithText)) { //if has whitespaces
+            //separate hours and minutes by whitespace
+            hourWithText = hourAndMinWithText.substring(0, hourAndMinWithText.indexOf(' '));
+            minutesWithText = hourAndMinWithText.substring(hourAndMinWithText.indexOf(' ') + 1);
+            //get only numbers to get hour
+            hour = hourWithText.replace(/\D/g, "");
+            //get only numbers to get minutes
+            minutes = minutesWithText.replace(/\D/g, "");
+            //conversion
+            hourToMinute = parseInt(hour) * 60;
+            //sum
+            finalSumMinutes = parseInt(hourToMinute) + parseInt(minutes);
+        } else {
+            //get only numbers to get hour
+            hour = hourAndMinWithText.replace(/\D/g, "");
+            //conversion
+            hourToMinute = parseInt(hour) * 60;
+            //sum
+            finalSumMinutes = hourToMinute;
+        }
+
+        //add to minutes array
+        durationMinutes.push(finalSumMinutes);
+    });
+
+    /** create a new array with conversions done*/
+    let cloneArray = [array];
+
+    cloneArray.forEach((element, i) => {
+        element.duration = durationMinutes[i];
+    });
+    console.log("EXERCICE 7 ->", cloneArray);
+    return cloneArray;
 }
 
 // Exercise 8: Get the best film of a year
