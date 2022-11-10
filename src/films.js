@@ -154,7 +154,18 @@ function hoursToMinutes(array) {
 function bestFilmOfYear(array, year) {
 
     let result;
+    let max;
+    let scores;
     result = array.filter(movie => movie.year === year);
+    console.log(result);
+    scores = result.map(object => {
+        return object.score;
+    });
+    console.log(scores);
+    max = Math.max(scores);
+
+    console.log(parseFloat(max));
+
 
     console.log("EXERCICE 8 ->", result);
     return result;
