@@ -1,6 +1,3 @@
-
-//moviesAverageByCategory(movies, 'Crime');
-
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(movies) {
     let result;
@@ -77,20 +74,18 @@ function orderByYear(array) {
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(array, category) {
     let result;
-    let average;
+
     result = array.filter(movie => {
         return movie.genre.includes(category);
-      });
+    });
 
-      console.log(JSON.stringify(result));
+    result = result.filter(element => {
+        return element.score !== '';
+    });
 
     result = result.reduce(function(sum, movie) {
-      if(movie.score==''){
-        movie.score =0;
-      }
         return sum + movie.score;
-
-    },0) / result.length;
+    }, 0) / result.length;
 
     console.log("EXERCICE 6 ->", result.toFixed(2));
     result = result.toFixed(2);
