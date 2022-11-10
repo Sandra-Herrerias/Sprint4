@@ -1,4 +1,4 @@
-//hoursToMinutes(movies);
+bestFilmOfYear(movies, 2013);
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
     let result;
@@ -151,8 +151,13 @@ function hoursToMinutes(array) {
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
+function bestFilmOfYear(array, year) {
 
+    let result;
+    result = array.filter(movie => movie.year === year);
+
+    console.log("EXERCICE 8 ->", result);
+    return result;
 }
 
 
