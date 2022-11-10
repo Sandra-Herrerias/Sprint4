@@ -1,4 +1,4 @@
-bestFilmOfYear(movies, 2013);
+//bestFilmOfYear(movies, 1968);
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
     let result;
@@ -154,19 +154,25 @@ function hoursToMinutes(array) {
 function bestFilmOfYear(array, year) {
 
     let result;
-    let max;
+    let max = 0;
     let scores;
     result = array.filter(movie => movie.year === year);
     console.log(result);
-    scores = result.map(object => {
-        return object.score;
-    });
-    console.log(scores);
-    max = Math.max(scores);
+    /*
+        max = result.reduce(function(prev, curr) {
+            return prev.score > curr.score ? prev : curr
+        })*/
 
-    console.log(parseFloat(max));
+    /*result.map(function(obj) {
+        if (obj.score > max) max = obj.score;
+    });*/
 
-
+    /*
+        const amounts = result.map((a) => a.score)
+        const highestAmount = Math.max(amounts);
+        result.filter(shot => shot.score === highestAmount)
+    */
+    console.log(max);
     console.log("EXERCICE 8 ->", result);
     return result;
 }
